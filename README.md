@@ -316,6 +316,8 @@ sudo systemctl enable --now et.service
 
 Builder Dockerfiles are located at [deployment/](deployment/). Supported OSes: CentOS 8, openSUSE and Ubuntu.
 
+For an iSH-compatible 32-bit client build, see [docs/build-ish-client.md](docs/build-ish-client.md).
+
 ## Reporting issues
 
 If you have any problems with installation or usage, please [file an issue on GitHub](https://github.com/MisterTea/EternalTerminal/issues).

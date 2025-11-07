@@ -137,6 +137,7 @@ endif(CMAKE_SYSTEM_NAME MATCHES "NetBSD")
 
 option(DISABLE_SENTRY "Disable Sentry crash logging" OFF)
 option(DISABLE_TELEMETRY "Disable all crash logging" OFF)
+option(ENABLE_STACKTRACE "Enable stack trace capture via UniversalStacktrace" ON)
 
 IF(APPLE)
   # Proxy test for Mojave? (Clang that doesn't have std::filesystem)
@@ -340,8 +341,10 @@ include_directories(
   ${SIMPLEINI_INCLUDE_DIRS}
 )
 
-if(NOT ANDROID)
+if(ENABLE_STACKTRACE AND NOT ANDROID)
   include_directories(${EXTERNAL_DIR}/UniversalStacktrace/ust)
+else()
+  add_definitions(-DET_DISABLE_STACKTRACE)
 endif()
 
 add_library(
